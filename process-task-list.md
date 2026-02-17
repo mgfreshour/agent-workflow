@@ -62,9 +62,9 @@ When continuing work in a new session:
 - **TDD (for code tasks only):** Red-Green-Refactor cycle. Does not apply to config, migrations, docs, or infrastructure. If skipping TDD, note why.
 - **Completion protocol:**
   1. Mark sub-task `[x]` and commit (see Git Checkpointing).
-  2. **Test tasks:** Verify the test fails before marking complete.
-  3. **Implementation tasks:** Verify all relevant tests pass before marking complete.
-  4. **Non-code tasks:** Verify acceptance criteria are met.
+  2. **`[TEST]` sub-tasks:** Verify the test passes and covers the intended behavior. If following TDD, also verify the test fails before implementation (red-green cycle).
+  3. **Implementation sub-tasks:** Verify all relevant tests pass. **At least one test must exist that exercises the functionality introduced or changed by this sub-task.** If no such test exists, do not mark complete — write the test first or flag to the user.
+  4. **Non-code sub-tasks:** Verify acceptance criteria are met. No test required if there is no testable behavior (e.g., docs, config).
   5. **When all sub-tasks in a parent are `[x]`:** Run the full test suite, verify green, clean up temp files, then mark the parent `[x]`.
 - Stop after each sub-task and wait for the user's go-ahead.
 
@@ -94,5 +94,6 @@ Before marking a sub-task complete, verify against the PRD (use FR-N IDs from Co
 - Does it satisfy the relevant FR-N requirement(s)?
 - Does it respect the constraints?
 - Does it align with the design document?
+- **Is there at least one test that proves this works?** If the sub-task introduced or changed behavior, a test must exist that would fail if the behavior were removed.
 
 If the output deviates from the PRD or design doc, flag it to the user before marking complete.
