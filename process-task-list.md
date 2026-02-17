@@ -22,12 +22,17 @@ git checkout -b feature/[feature-name]
 
 ### After completing each sub-task
 
-Commit with the task number in the message:
+Commit with a descriptive message that stands on its own without the task list for context. The message should describe **what changed and why**, not reference task list numbering (e.g., "1.2", "2.3") since the task list is not committed to the repository.
 
 ```
 git add -A
-git commit -m "Complete task [X.Y]: [brief description]"
+git commit -m "[feature-area]: [what changed and why]"
 ```
+
+Examples:
+- `git commit -m "auth: add JWT token validation middleware"`
+- `git commit -m "api: handle 429 rate-limit responses with exponential backoff"`
+- `git commit -m "auth: add tests for token expiration and refresh flow"`
 
 Commit the task file alongside code changes to keep them in sync.
 
